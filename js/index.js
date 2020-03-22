@@ -1,7 +1,5 @@
 $(function(){
-    
-    // console.log($('tbody').html());
-    
+    //扩展菜单
     $('.nav li').eq(3).hover(function(){
         $('.extends').css('height',120);
     },function(){
@@ -9,7 +7,6 @@ $(function(){
     });
 
     time=new Date();
-    // console.log(time.getFullYear()+'-'+(time.getMonth()+1)+'-'+time.getDate());
     $('.date').html(time.getFullYear()+'-'+(time.getMonth()+1)+'-'+time.getDate());
     
     //获取本月天数
@@ -29,6 +26,7 @@ $(function(){
     var arrTarget=[]; //当前站点物料的target数组
 
 
+
     $('.duan').change(function(){
         var shtml='<option>---</option>';
         var section=$('.duan').val();
@@ -42,7 +40,6 @@ $(function(){
     });
 
     $('.zhan').change(function(){
-        // console.log($(this).find('option:selected').text());
         var station=$(this).find('option:selected').text();
         nowStation=station;
         if(station==='---'){
@@ -60,17 +57,16 @@ $(function(){
             // window.sessionStorage.setItem(section,arr1);
         }
         
-        // console.log(arr1[0]['name'],station);
 
         var thtml='';
         for(var i=0;i<arr1.length;i++){
             thtml+='<tr>'
             for(var key in arr1[i]){
-                thtml+='<td>'+arr1[i][key]+'</td>'
+                thtml+='<td>'+arr1[i][key]+'</td>';
             }
-            thtml+='<td><button>修改</button></td></tr>'
+            thtml+='<td><button>修改</button><button>确定</button></td></tr>';
         }
-        // console.log(thtml);
+
         $('tbody').html(thtml);
 
         var mhtml='';
@@ -94,12 +90,11 @@ $(function(){
         for(var i=0;i<arr1.length;i++){
             arrTarget.push(arr1[i]['target']);
         }
-        // console.log(arrTarget);
+        
         var target=[];
         for(var i=0;i<dayNum;i++){
             target.push(arrTarget[0]);
         }
-        // console.log(target);
 
         //绘制图表
         var item={
@@ -118,12 +113,39 @@ $(function(){
 
     });
 
+    //点击按钮修改单耗目标
+    var set;
+    $('tbody').click(function(e){
+        e = e||window.event; //兼容IE8
+        e.target = e.target||e.srcElement;  //获取触发事件的元素
+        if($(e.target).html()==='修改'){
+            set=$(e.target).parent().parent().find('td').eq(2);
+            // alert ($(target).get(0).tagName);
+            setNum=$(set).html();
+            $(set).replaceWith('<td><input value='+setNum+'></td>');
+            var setNew=$(e.target).parent().parent().find('td').eq(2);
+            setNew.find('input').css('width','100%').css('border','none').css('outline','none')
+            .css('height','22px').css('margin','0').css('display','block').css('font-size','16px');
+            setNew.find('input').trigger('focus');
+            $(e.target).html('取消');
+        }else if($(e.target).html()==='取消'){
+            var setNew=$(e.target).parent().parent().find('td').eq(2);
+            setNew.replaceWith(set);
+            $(e.target).html('修改');
+        }else if($(e.target).html()==='确定'){
+            var setNew=$(e.target).parent().parent().find('td').eq(2);
+            var val=setNew.find('input').val();
+            setNew.replaceWith(set);
+            set.html(val);
+            $(e.target).siblings().html('修改');
+        }
+    });
+
 
     //物料列表点击,innerHTML无法绑定事件，使用事件委托
     $('.martical ul').click(function(e){
         e = e||window.event; //兼容IE8
-        e.target = e.target||e.srcElement;  //判断目标事件
-        // console.log($(e.target).index());
+        e.target = e.target||e.srcElement;  //获取触发事件的元素
 
         $(e.target).addClass('active').siblings().removeClass('active');
 
@@ -164,7 +186,6 @@ $(function(){
         var item={
             xData:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
             name:nowItem,
-            // unit:[6, 10, 10, 20,5, 20, 36, 10, 10, 20,5, 20],
             target:target
         };
 
@@ -227,7 +248,11 @@ $(function(){
                     color:'#111'
                 },
                 lineStyle:{
-                    color:'#4a7ebb'
+                    color:'#4a7ebb',
+                    width:3
+                },
+                itemStyle: {
+                    color: '#4a7ebb'
                 }
             },
             {
@@ -949,55 +974,4 @@ $(function(){
         return dayNum;
     }
     
-    
-    // // 基于准备好的dom，初始化echarts实例
-    // var myChart = echarts.init($('#day-data').get(0));
-
-    // // 指定图表的配置项和数据
-    // var option = {
-    //     title: {
-    //         text: 'ECharts 入门示例'
-    //     },
-    //     tooltip: {},
-    //     legend: {
-    //         data:['销量']
-    //     },
-    //     xAxis: {
-    //         data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-    //     },
-    //     yAxis: {},
-    //     series: [{
-    //         name: '销量',
-    //         type: 'bar',
-    //         data: [5, 20, 36, 10, 10, 20,5, 20, 36, 10, 10, 20,5, 20, 36, 10, 10, 20,5, 20, 36, 10, 10, 20,5, 20, 36, 10, 10, 20]
-    //     }]
-    // };
-
-    // // 使用刚指定的配置项和数据显示图表。
-    // myChart.setOption(option);
-
-    // var myChart = echarts.init($('#month-data').get(0));
-
-    // // 指定图表的配置项和数据
-    // var option = {
-    //     title: {
-    //         text: 'ECharts 入门示例2'
-    //     },
-    //     tooltip: {},
-    //     legend: {
-    //         data:['销量']
-    //     },
-    //     xAxis: {
-    //         data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-    //     },
-    //     yAxis: {},
-    //     series: [{
-    //         name: '销量',
-    //         type: 'bar',
-    //         data: [5, 20, 36, 10, 10, 20,5, 20, 36, 10, 10, 20,5, 20, 36, 10, 10, 20,5, 20, 36, 10, 10, 20,5, 20, 36, 10, 10, 20]
-    //     }]
-    // };
-
-    // // 使用刚指定的配置项和数据显示图表。
-    // myChart.setOption(option);
 });
