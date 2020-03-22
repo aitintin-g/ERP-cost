@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/cost.css">
+    <link rel="icon" href="img/favicon.ico">
+    <script src="js/echarts.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/cost.js"></script>
+    <title>ERP-Cost</title>
+</head>
+<body scroll="no">
+    <header>
+        <div class="header">
+            <section>
+                <h1 class="logo">飘城旅行社</h1>
+                <div class="personal-reset">
+                    <ul class="personal">
+                        <li><span class="icon1" style="background:url(img/help.png) no-repeat 4px 4px / 17px 17px;"></span><span class="icon-text"> 帮助</span></li>
+                        <li><span class="icon1" style="background:url(img/msg.png) no-repeat 4px 4px / 17px 17px;"></span><span class="icon-text"> 管理员留言</span></li>
+                        <li><span class="icon1" style="background:url(img/user-config.png) no-repeat 4px 4px / 17px 17px;"></span><span class="icon-text"> 个人设置</span></li>
+                        <li><span class="icon1" style="background:url(img/update.png) no-repeat 4px 4px / 17px 17px;"></span><span class="icon-text"> 刷新</span></li>
+                        <li><span class="icon1" style="background:url(img/note.png) no-repeat 4px 4px / 17px 17px;"></span><span class="icon-text"> 记事本</span></li>
+                    </ul>
+                    <div id="reset-clearfloat">
+                        <ul class="reset">
+                            <li>退出</li>
+                            <li>清除缓存</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section id="nav">
+                <nav>
+                    <ul class="nav">
+                        <li class="active"><a href="###">安管系统</a></li>
+                        <li><a href="###">业务系统</a></li>
+                        <li><a href="###">生管系统</a></li>
+                        <li>
+                            <a href="###">成本系统</a>
+                            <ul class="extends">
+                                <li><a href="index.html">原物料单耗</a></li>
+                                <li><a href="efficiency.html">人均公时产出</a></li>
+                                <li><a href="###">制造成本分析</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="###">资材系统</a></li>
+                        <li><a href="###">考勤系统</a></li>
+                        <li><a href="###">共用系统</a></li>
+                        <li><a href="###">行政系统</a></li>
+                        <li><a href="###">其他</a></li>
+                    </ul>
+                </nav>
+            </section>
+        </div>
+    </header>
+    <div id="container">
+        <main class="container-right">
+            <div class="choose">
+                <select name="duan" id="" class="duan">
+                    <option value="W1">W1</option>
+                    <option value="W2">W2</option>
+                    <option value="W3">W3</option>
+                    <option value="W4">W4</option>
+                </select>
+                <select name="zhan" id="" class="zhan">
+                    <option value="">---</option>
+                    <option value="">IL</option>
+                    <option value="">Press</option>
+                    <option value="">Drill</option>
+                </select>
+                <span class="date"></span>
+            </div>
+            <div class="article art1">
+                <h2>---制造费用</h2>
+            </div>
+            <div class="table cost">
+                <table border="1" class="main-show main-cost">
+                    <caption>各类成本费用</caption>
+                    <thead>
+                        <tr>
+                            <th>-</th>
+                            <th colspan="15">Y2020</th>
+                        </tr>
+                        <tr>
+                            <!-- js生成 -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- js生成 -->
+                    </tbody>
+                </table>
+                <div class="mask m1">
+                    <table class="main-col" border="1">
+                        <tr><td>-</td></tr>
+                        <tr><td>月份</td></tr>
+                        <tr><td>Sales Revenues</td></tr>
+                        <tr><td>-</td></tr>
+                        <tr><td>Materials:</td></tr>
+                        <tr><td>Direct Material</td></tr>
+                        <tr><td>Indirect Material</td></tr>
+                        <tr><td>-</td></tr>
+                        <tr><td>Manpower & Related:</td></tr>
+                        <tr><td>Direct Labor</td></tr>
+                        <tr><td>Indirect Labor</td></tr>
+                        <tr><td>Local - Bonus</td></tr>
+                        <tr><td>C&B</td></tr>
+                        <tr><td>-</td></tr>
+                        <tr><td>Overheads:</td></tr>
+                        <tr><td>Outsourcing Expenses</td></tr>
+                        <tr><td>Depreciation</td></tr>
+                        <tr><td>Equipment Maintenance</td></tr>
+                        <tr><td>Utilities</td></tr>
+                        <tr><td>Other Factory Overheads</td></tr>
+                        <tr><td>Total</td></tr>
+                        <tr><td>%</td></tr>
+                    </table>
+                </div>
+                <div class="rMask rm1"></div>
+            </div>
+            <div class="article art2">
+                <h2>---单位成本</h2>
+            </div>
+            <div class="table unit">
+                <div class="contain">
+                    <table border="1" class="main-show main-unit">
+                        <caption>各类成本费用</caption>
+                        <thead>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                               <!-- js生成 -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sales Revenues</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>-</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Materials:</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Direct Material</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Indirect Material</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>-</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Manpower & Related:</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Direct Labor</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Indirect Labor</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Local - Bonus</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>C&B</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>-</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Overheads:</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Outsourcing Expenses</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Depreciation</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Equipment Maintenance</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Utilities</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Other Factory Overheads</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mask m2">
+                    <table class="main-col" border="1">
+                        <tr><td>output</td></tr>
+                        <tr><td>月份</td></tr>
+                        <tr><td>-</td></tr>
+                        <tr><td>Materials:</td></tr>
+                        <tr><td>Direct Material</td></tr>
+                        <tr><td>Indirect Material</td></tr>
+                        <tr><td>-</td></tr>
+                        <tr><td>Manpower & Related:</td></tr>
+                        <tr><td>Direct Labor</td></tr>
+                        <tr><td>Indirect Labor</td></tr>
+                        <tr><td>Local - Bonus</td></tr>
+                        <tr><td>C&B</td></tr>
+                        <tr><td>-</td></tr>
+                        <tr><td>Overheads:</td></tr>
+                        <tr><td>Outsourcing Expenses</td></tr>
+                        <tr><td>Depreciation</td></tr>
+                        <tr><td>Equipment Maintenance</td></tr>
+                        <tr><td>Utilities</td></tr>
+                        <tr><td>Other Factory Overheads</td></tr>
+                        <tr><td>Total</td></tr>
+                    </table>
+                </div>
+                <!-- <div class="rMask rm2"></div> -->
+            </div>
+            <div class="costData">
+                <div id="costData" style="width: 1000px;height:580px;"></div>
+            </div>
+            <div class="blank"></div>
+        </main>
+    </div>
+    <div class="bg">正式区资料</div>
+</body>
+</html>

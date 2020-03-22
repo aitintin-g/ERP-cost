@@ -1,0 +1,259 @@
+html *{
+    margin:0;
+    padding:0;
+}
+ul,li{
+    list-style: none;
+}
+a{
+   text-decoration:none;
+}
+/*通过设置body下的超出隐藏，解决工作台调试时出现滚动条的问题*/
+body{
+	overflow:hidden;
+}
+/*通过设置html，body高度100%，来使子元素的height:100%;生效.通过子元素绝对定位也能实现同样效果*/
+body,html{
+    height:100%;
+    /*测试不起效果，只能使用绝对定位了*/
+}
+.bg{
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:-2;
+    line-height:900px;
+    text-align:center;
+    font-size:65px;
+    letter-spacing:20px;
+    color:#ccc;
+    opacity:.5;
+    background:#eee;
+    /* background:red; */
+}
+.header{
+    width:100%;
+    height:100px;
+    background:yellow;
+    /*因为菜单扩展需要覆盖到兄弟元素之上，所以不能设置BFC*/
+    /* overflow:auto; */
+    /*这里要和main的定位保持一致，层次才能起作用*/
+    position:relative;
+    z-index:3;
+}
+.header .logo{
+    float:left;
+    width:240px;
+    height:70px;
+    line-height:70px;
+}
+.header .personal-reset{
+    width:50%;
+    height:70px;
+    float:right;
+    padding-right:20px;
+    background:green;
+}
+ul.personal{
+    margin:5px 0;
+    /* background:red; */
+    height:25px;
+}
+ul.personal>li{
+    float:right; 
+    /* width:20%; */
+    text-align:center;
+    /* background:red; */
+    display:inline;
+    margin-right:30px;
+    text-align:center;
+    line-height:0;
+    cursor:pointer;
+}
+.icon1{
+    width:25px;
+    height:25px;
+    display:inline-block;
+    /* background:url(../img/help.png) no-repeat 4px 4px / 17px 17px; */
+}
+.icon-text{
+    /* line-height:25px; */
+    display:inline-block;
+    height:25px;
+    vertical-align:top;
+    line-height:25px;
+}
+ul.reset{
+    margin:7px 0;
+    /* background:blue; */
+    height:21px;
+}
+ul.reset>li{
+    float:right; 
+    text-align:center;
+    background:#939393;
+    display:inline;
+    margin-right:30px;
+    padding:0 8px;
+    line-height:25px;
+    border-radius:3px;
+    color:#eee;
+    cursor:pointer;
+    font-size:14px;
+}
+#nav{
+    float:left;
+    width:100%;
+}
+ul.nav{
+    background:#2bacf0;
+    height:30px;
+}
+ul.nav>li{
+    float:left;
+    width:9%;
+    margin:0 1%;
+    text-align:center;
+    height:30px;
+    line-height:30px;
+    cursor:pointer;
+    border-right:1px #333 solid;
+    border-radius: 0 3px 3px 0;
+}
+ul.nav>li a{
+    color:#eee;
+    font-weight:bold;
+}
+ul.nav>li:nth-child(4){
+    position:relative;
+    background:red;
+}
+.extends{
+    width:114px;
+    height:0;
+    background:#ccc;
+    overflow:hidden;
+    transition:height .1s linear;  
+}
+.extends>li{
+    font-size:15px;
+    text-align:center;
+}
+.extends>li:nth-child(1){
+    margin-top:10px;
+}
+.extends>li:hover{
+    background:#aaa;
+    border-bottom:1px #333 dashed; 
+}
+#container{
+    position:relative;
+    width:100%;
+    height:980px;
+    overflow:scroll;
+    /* z-index:-1; */
+}
+.container-right{
+    width:100%;
+    /* height:760px; */
+    /* background:green; */
+}
+.choose{
+    height:50px;
+    padding-top:15px;
+    padding-left:80px;
+}
+.choose select{
+    width:85px;
+    height:25px;
+    margin-right:50px;
+}
+.choose span{
+    float:right;
+    padding-right:80px;
+}
+.date{
+    font-weight:bold;
+    font-style:italic;
+    font-size:14px;
+}
+.table{
+    padding:0 70px;
+    width:100%;
+    box-sizing:border-box;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+table caption{
+    line-height:60px;
+    font-size:27px;
+}
+table tr{
+    width:100%;
+    text-align:center;
+}
+table th{
+    background:#ccc;
+}
+.martical{
+    margin-top:20px;
+    padding:0 70px;
+}
+.martical h2{
+    line-height:40px;
+    font-size:22px;
+    font-weight:normal;
+    
+}
+.martical ul{
+    color:#eee;
+}
+.martical ul li{
+    float:left;
+    margin:0 15px;
+    margin-top:10px;
+    padding:0 8px;
+    background:#999;
+    line-height:25px;
+    border-radius:5px;
+    cursor:pointer;
+}
+.martical ul li:nth-child(1){
+    margin-left:0;
+    /* color:brown;
+    font-weight:bold; */
+}
+.active{
+    color:#333;
+    font-weight:bold;
+}
+.dayData{
+    margin-top:55px;
+    padding:0 70px;
+}
+.toggle{
+    width:100px;
+    height:40px;
+    position:absolute;
+    top:650px;
+    right:75px;
+    background:#999;
+    line-height:40px;
+    text-align:center;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+.monthData{
+    margin-top:5px;
+    padding:0 70px;
+    display:none;
+}
+.blank{
+    width:100%;
+    height:400px;
+}
