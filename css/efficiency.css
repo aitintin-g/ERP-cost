@@ -1,0 +1,52 @@
+.table{
+    padding:0 70px;
+    width:100%;
+    box-sizing:border-box;
+    position:relative;
+}
+table{
+    /* width:100%; */
+    border-collapse:collapse;
+}
+table caption{
+    line-height:60px;
+    font-size:27px;
+    color:transparent;
+}
+table tr{
+    /* width:100%; */
+    text-align:center;
+    background:#eee;
+}
+table th{
+    background:rgb(197,217,241);
+}
+table th,table td{
+    width:90px;
+    height:30px;
+    font-size:14px;
+}
+.contain{
+    width:100%;
+    overflow-y:hidden;
+}
+.contain table{
+    width:1354px;
+}
+.mask{
+    position:absolute;
+    top:60px;
+    left:70px;
+}
+th.month{
+    background:#fde9d9;
+}
+h2{
+    text-align:center;
+    position:relative;
+    top:45px;
+}
+.dayData{
+    margin-top:55px;
+    padding:0 70px;
+}

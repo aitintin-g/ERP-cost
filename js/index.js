@@ -109,35 +109,43 @@ $(function(){
 
         //关闭之前的每月单耗图表
         $('.monthData').css('display','none');
+
+        //防止点击了修改按钮后马上切换页面,导致parent有值，目标不能修改
+        parent=null
         
 
     });
 
     //点击按钮修改单耗目标
     var set;
+    var parent=null;
     $('tbody').click(function(e){
         e = e||window.event; //兼容IE8
         e.target = e.target||e.srcElement;  //获取触发事件的元素
         if($(e.target).html()==='修改'){
-            set=$(e.target).parent().parent().find('td').eq(2);
+            if(parent){return};
+            parent=$(e.target).parent();
+            set=parent.parent().find('td').eq(2);
             // alert ($(target).get(0).tagName);
             setNum=$(set).html();
             $(set).replaceWith('<td><input value='+setNum+'></td>');
-            var setNew=$(e.target).parent().parent().find('td').eq(2);
+            var setNew=parent.parent().find('td').eq(2);
             setNew.find('input').css('width','100%').css('border','none').css('outline','none')
             .css('height','22px').css('margin','0').css('display','block').css('font-size','16px');
             setNew.find('input').trigger('focus');
             $(e.target).html('取消');
         }else if($(e.target).html()==='取消'){
-            var setNew=$(e.target).parent().parent().find('td').eq(2);
+            var setNew=parent.parent().find('td').eq(2);
             setNew.replaceWith(set);
             $(e.target).html('修改');
-        }else if($(e.target).html()==='确定'){
-            var setNew=$(e.target).parent().parent().find('td').eq(2);
+            parent=null
+        }else if($(e.target).html()==='确定'&&$(e.target).siblings().html()==='取消'){
+            var setNew=parent.parent().find('td').eq(2);
             var val=setNew.find('input').val();
             setNew.replaceWith(set);
             set.html(val);
             $(e.target).siblings().html('修改');
+            parent=null
         }
     });
 
@@ -480,11 +488,11 @@ $(function(){
                     {
                         name:'铜箔',
                         code:'10-0119L-SY',
-                        target:'82.38%',
+                        target:'82.38',
                         num:'1567704',
                         output:'1313892',
-                        unit:'83.81%',
-                        un:'利用率'
+                        unit:'83.81',
+                        un:'利用率%'
                     },
                     {
                         name:'牛皮纸',

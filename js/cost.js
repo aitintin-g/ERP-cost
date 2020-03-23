@@ -6,6 +6,9 @@ $(function(){
         $('.extends').css('height',0);
     });
 
+    time=new Date();
+    $('.date').html(time.getFullYear()+'-'+(time.getMonth()+1)+'-'+time.getDate());
+
     //利用遮罩实现Excel冻结窗口效果
     $('.cost').scroll(function(){
         // console.log($('.cost').scrollLeft());
@@ -536,7 +539,7 @@ $(function(){
                         color:'#111'
                     },
                     itemStyle: {
-                        color: '#fcd5b4'
+                        color: '#c4d79b'
                     }
                 },
                 {

@@ -9,7 +9,7 @@
     <link rel="icon" href="img/favicon.ico">
     <script src="js/echarts.min.js"></script>
     <script src="js/jquery.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/efficiency.js"></script>
     <title>ERP-efficiency</title>
 </head>
 <body scroll="no">
@@ -74,77 +74,32 @@
                 </select>
                 <span class="date"></span>
             </div>
+            <h2>IL人均公时产出</h2>
             <div class="table">
-                <table border=1>
-                    <caption>原物料单耗表</caption>
-                    <thead>
-                        <tr>
-                            <th>物料编码</th>
-                            <th>物料名称</th>
-                            <th>目标单耗</th>
-                            <th>物料领用</th>
-                            <th>对应产出</th>
-                            <th>实际单耗</th>
-                            <th>单位</th>
-                            <th>操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                    </tbody>
-                    <tfoot></tfoot>
-                </table>
+                <div class="contain">
+                    <table border=1>
+                        <caption>人均公时产出</caption>
+                        <thead>
+                            <!-- js生成 -->
+                        </thead>
+                        <tbody>
+                            <!-- js生成 -->
+                        </tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </div>
+                <div class="mask">
+                    <table class="main-col" border="1">
+                        <tr><th>Process</th><th>Target</th></tr>
+                        <tr><th>产出面积</th><td>-</td></tr>
+                        <tr><th>总公时</th><td>-</td></tr>
+                        <tr><th>效率</th><td>15.7</td></tr>
+                    </table>
+                </div>
             </div>
-           
+            <div class="dayData">
+                <div id="dayData" style="width: 1000px;height:380px;"></div>
+            </div>
             <div class="blank"></div>
         </main>
     </div>
